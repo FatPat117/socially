@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
@@ -35,7 +36,27 @@ export default function RootLayout({
                                                 enableSystem
                                                 disableTransitionOnChange
                                         >
-                                                {children}
+                                                <div className="min-h-screen">
+                                                        <Navbar />
+                                                        {/* Container to center the main content */}
+
+                                                        <main className="py-8">
+                                                                {/* Main Content */}
+                                                                <div className="max-w-7xl mx-auto px-4">
+                                                                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                                                                {/* SideBar */}
+                                                                                <div className="hidden lg:block lg:col-span-3">
+                                                                                        SideBar
+                                                                                </div>
+
+                                                                                {/* Main Content */}
+                                                                                <div className="lg:col-span-9">
+                                                                                        {children}
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+                                                        </main>
+                                                </div>
                                         </ThemeProvider>
                                 </body>
                         </html>
