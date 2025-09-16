@@ -1,9 +1,10 @@
 import Navbar from "@/components/Navbar";
-import SideBar from "@/components/Sidebar";
+import SideBar from "@/components/SideBar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -58,6 +59,7 @@ export default function RootLayout({
                                                                 </div>
                                                         </main>
                                                 </div>
+                                                <Toaster />
                                         </ThemeProvider>
                                 </body>
                         </html>

@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Separator } from "./ui/separator";
 
-const Sidebar = async () => {
+export const SideBar = async () => {
         const authUser = await currentUser();
         if (!authUser) {
                 return <UnAuthenticatedSidebar />;
@@ -120,4 +120,4 @@ const UnAuthenticatedSidebar = () => (
                 </Card>
         </div>
 );
-export default Sidebar;
+export default SideBar;
