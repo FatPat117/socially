@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SideBar from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
@@ -46,7 +47,7 @@ export default function RootLayout({
                                                                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                                                                                 {/* SideBar */}
                                                                                 <div className="hidden lg:block lg:col-span-3">
-                                                                                        SideBar
+                                                                                        <SideBar />
                                                                                 </div>
 
                                                                                 {/* Main Content */}
