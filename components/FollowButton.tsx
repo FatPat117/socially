@@ -14,8 +14,9 @@ const FollowButton = ({ userId }: { userId: string }) => {
                 try {
                         await toggleFollow(userId);
                         toast.success("Followed successfully");
-                } catch (error) {
-                        toast.error("Something went wrong", error);
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                } catch (_error) {
+                        toast.error("Something went wrong");
                 } finally {
                         setIsLoading(false);
                 }
