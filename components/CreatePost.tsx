@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { createPost } from "@/actions/post.action";
 import toast from "react-hot-toast";
+import ImageUpload from "./ImageUpload";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -23,14 +24,14 @@ const CreatePost = () => {
                 setIsPosting(true);
                 try {
                         const result = await createPost(content, imageUrl);
-                        if (result.success) {
+                        if (result?.success) {
                                 setContent("");
                                 setImageUrl("");
                                 setShowImageUpload(false);
                                 toast.success("Post created successfully");
                         }
                 } catch (error) {
-                        toast.error("Failed to create post", error);
+                        toast.error("Failed to create post, " + (error as Error).message);
                 } finally {
                         setIsPosting(false);
                 }
@@ -57,6 +58,19 @@ const CreatePost = () => {
                                 </div>
 
                                 {/* Handle Image upload */}
+
+                                {(showImageUpload || imageUrl) && (
+                                        <div className="border rounded-lg p-4">
+                                                <ImageUpload
+                                                        endpoint="postImage"
+                                                        onChange={(url) => {
+                                                                setImageUrl(url);
+                                                                if (!url) setShowImageUpload(false);
+                                                        }}
+                                                        value={imageUrl}
+                                                />
+                                        </div>
+                                )}
 
                                 <div className="flex items-center justify-between border-t pt-4">
                                         <div className="flex space-x-2">
