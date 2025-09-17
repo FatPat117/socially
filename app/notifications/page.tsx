@@ -41,14 +41,9 @@ function NotificationsPage() {
 
                                 const unreadIds = data.filter((n) => !n.read).map((n) => n.id);
                                 if (unreadIds.length > 0) await markNotificationsAsRead(unreadIds);
+                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                         } catch (error) {
-                                toast.error(
-                                        "Failed to fetch notifications",
-                                        {
-                                                duration: 5000,
-                                        },
-                                        error
-                                );
+                                toast.error("Failed to fetch notifications");
                         } finally {
                                 setIsLoading(false);
                         }
